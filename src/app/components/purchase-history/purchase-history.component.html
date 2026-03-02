@@ -1,0 +1,55 @@
+<div class="history-container">
+  <h2 class="page-title">Moje Karte</h2>
+
+  <div *ngIf="(isLoggedIn | async); else notLoggedIn">
+    <ng-container *ngIf="(purchaseHistory | async) as purchases">
+      <mat-card *ngIf="purchases.length === 0" class="no-items-card">
+        <mat-card-content class="no-items-message">
+          Nemate nijednu kupljenu kartu.
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card *ngFor="let purchase of purchases" class="purchase-card">
+        <mat-card-header>
+          <mat-card-title class="purchase-date">
+            <mat-icon>receipt</mat-icon>
+            Kupovina - {{ purchase.purchasedAt | date:'dd.MM.yyyy. HH:mm' }}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <ng-container *ngFor="let item of purchase.items; let last = last">
+              <mat-list-item class="purchase-item">
+                <img [src]="item.projection.posterPath" [alt]="item.projection.title" class="movie-poster-small">
+                <div class="item-main-content">
+                  <div class="item-title">{{ item.projection.title }}</div>
+                  <div class="item-details-group">
+                    <div class="item-detail-line">Broj karata: {{ item.quantity }}</div>
+                    <div class="item-detail-line">Cena po karti: {{ item.projection.ticketPrice | currency:'RSD ':'symbol':'1.2-2':'sr' }}</div>
+                    <div class="item-detail-line">Ukupno: {{ (item.projection.ticketPrice * item.quantity) | currency:'RSD ':'symbol':'1.2-2':'sr' }}</div>
+                  </div>
+                </div>
+              </mat-list-item>
+              <mat-divider *ngIf="!last"></mat-divider>
+            </ng-container>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions class="purchase-total">
+          <span class="total-label">Ukupna cena:</span>
+          <span class="total-price">{{ purchase.totalPrice | currency:'RSD ':'symbol':'1.2-2':'sr' }}</span>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>
+
+  <ng-template #notLoggedIn>
+    <mat-card class="not-logged-in-card">
+      <mat-card-content class="not-logged-in-content">
+        <p>Morate biti prijavljeni da biste videli svoje karte.</p>
+        <button mat-raised-button color="primary" (click)="goToLogin()">
+          Prijavi se
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+</div>

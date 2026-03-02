@@ -1,0 +1,123 @@
+.history-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.page-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #3f51b5;
+}
+.no-items-card {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin-top: 20px;
+}
+.no-items-message {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+  padding: 20px;
+}
+.purchase-card {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.purchase-date {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  color: #3f51b5;
+}
+.purchase-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 15px 0;
+  gap: 20px;
+  width: 100%;
+  height: auto !important;
+  min-height: 140px;
+}
+.movie-poster-small {
+  width: 90px;
+  height: 135px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+  min-width: 90px;
+}
+.item-main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 10px;
+}
+.item-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+.item-details-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #555;
+  font-size: 14px;
+}
+.purchase-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  gap: 10px;
+}
+.total-label {
+  font-size: 16px;
+  color: #555;
+}
+.total-price {
+  font-size: 22px;
+  font-weight: 600;
+  color: #3f51b5;
+}
+.not-logged-in-card {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.not-logged-in-content {
+  text-align: center;
+  padding: 20px;
+}
+.not-logged-in-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .purchase-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .movie-poster-small {
+    margin-bottom: 15px;
+  }
+  .item-main-content {
+    align-items: center;
+  }
+  .purchase-total {
+    flex-direction: column;
+    align-items: center;
+  }
+}
